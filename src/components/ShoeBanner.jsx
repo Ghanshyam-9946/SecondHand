@@ -1,16 +1,70 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { UserContext } from '../context/Context';
 
 const ShoeBanner = () => {
+  const navigate = useNavigate();
+  const {user, setUser} = useContext(UserContext);
+
+
+let arr = [{
+  para: 'LeBron 19 (Basketball Shoes)',
+  image: "./main.png"
+}];
+
+   const handleAddToCart = (item) => {
+    console.log("in maion",item)
+
+    setUser([...user, {...item}])
+    navigate('/cart')
+  
+  };
+
   return (
-    <div className=' h-140 w-screen bg-red-800'>
-        <NavLink to='/collection'>
-            <div>
-                {/* <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="error" /> */}
-            </div>
-        </NavLink>
+   <>
+    {arr.map((val)=> (
+      <div className="bg-black text-white min-h-screen flex items-center justify-center px-6">
+      
+      <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between">
+        
+        {/* Left Content */}
+        <div className="max-w-xl space-y-6">
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+            YOUR FAVORITE<br />SNEAKERS
+          </h2>
+          <div>
+            <p className="text-lg font-semibold">{val.para}</p>
+            <ul className="text-sm text-gray-300 mt-2 space-y-1 list-disc list-inside">
+              <li>Rubber outsole gives you multidirectional traction.</li>
+              <li>Shown: Multi-Color/Multi-Color</li>
+              <li>Style: DH8460-900</li>
+            </ul>
+          </div>
+         <button onClick={()=> handleAddToCart(val)} className=" bg-white text-black px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-200 transition">
+            Make an order
+          </button>
+        </div>
+
+        {/* Right Sneaker Image */}
+        <div className="mt-10 md:mt-0 relative">
+          <div className="relative z-10">
+            <img
+            
+              src= {val.image}
+              alt="Sneaker"
+              className="w-[400px] drop-shadow-2xl"
+            />
+          </div>
+          <div className="absolute inset-0 z-0 rounded-full bg-purple-500 blur-3xl opacity-40"></div>
+        </div>
+      </div>
     </div>
+
+    ))}
+   
+    </>
   )
+  
 }
 
 export default ShoeBanner

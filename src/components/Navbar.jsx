@@ -6,8 +6,8 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <div className="h-13 w-full  flex items-center justify-between px-22 py-12">
-      <img width={100} src="./logonike.png" alt="error in image" />
+    <div className="h-13 w-full  flex items-center justify-between px-22 py-10">
+      <img width={200} src="./logo.png" alt="error in image" />
       <div className="flex gap-15">
         <NavLink
           to="/"

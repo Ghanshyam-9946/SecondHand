@@ -8,8 +8,9 @@ import Sell from '../pages/Sell'
 import Signin from '../pages/Signin'
 import Signup from '../pages/Signup'
 import Cart from '../pages/Cart'
+import Buy from '../pages/Buy'
 
-import Addcart from '../components/Addcart'
+
 
 
 const Mainroute = () => {
@@ -24,7 +25,8 @@ const Mainroute = () => {
             <Route path='signin' element= {<Signin/>}/>
             <Route path='signup' element= {<Signup/>}/>
             <Route path='cart' element = {<Cart/>}/>
-            <Route path='addcart' element = {<Addcart/>}/>
+            <Route path='buy' element = {<Buy/>}/>
+           
            
            
 
