@@ -5,13 +5,11 @@ export const UserContext = createContext(null);
 
 // Step 2: Create the provider component
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({
-    name: "Srishti",
-    age: 12,
-  });
+  const [user, setUser] = useState([]);
+  const [FormData, setFormData] = useState([]);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, FormData , setFormData }}>
       {children}
     </UserContext.Provider>
   );

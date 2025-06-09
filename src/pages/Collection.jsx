@@ -1,16 +1,23 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { UserContext } from '../context/Context';
+import ComponentsShoe from '../components/ComponentsShoe';
 
 const Collection = () => {
-    const navigate = useNavigate();
-    const navigateHandler = ()=>{
-        navigate(-1);
-    }
-  return (
-    <div>
-        <button onClick={navigateHandler}> Go Back</button>
-    </div>
-  )
-}
+ const { FormData } = useContext(UserContext);
 
-export default Collection
+  return(
+
+    <div className='h-1/2 bg-red-200'>
+  {FormData.length === 0 ? (
+    <p>No data found</p>
+  ) : 
+    <ComponentsShoe/>
+  }
+</div>
+
+  );
+
+  
+};
+
+export default Collection;
