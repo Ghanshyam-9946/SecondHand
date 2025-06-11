@@ -1,23 +1,26 @@
-import React, { useContext } from 'react'
+
 // import { useNavigate } from 'react-router-dom';
 
-import { UserContext } from '../context/Context';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { removeFromCart } from '../store/reducers/cartdata';
 
 
 const Cart = () => {
-  const {user, setUser}=useContext(UserContext);
-  // console.log("in context->", user.length)
+  const data = useSelector((state)=> state.cart.data)
+  const dispatch = useDispatch()
+
 
   const handleDelete = (id) => {
-    setUser(user.filter(val => val.id !== id))
-    console.log(user)
+    dispatch(removeFromCart(id))
+    // console.log(user)
     // alert("Item deleted")
   }
   return (
     <div>
-       {user?.length > 0 ? (
-        user.map((item) => (
+       {data?.length > 0 ? (
+        data.map((item) => (
           <div className="p-4 max-w-5xl mx-auto">
       <h1 className="text-2xl font-bold mb-4">My Cart </h1>
       <div className="grid md:grid-cols-3 gap-4">

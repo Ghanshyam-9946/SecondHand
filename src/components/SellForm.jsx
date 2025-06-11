@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, {  useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../context/Context";
+
 import { nanoid } from "nanoid";
 
 const SellForm = () => {
-  const { FormData, setFormData } = useContext(UserContext);
+
   const { register, handleSubmit, reset } = useForm();
   const navigate = useNavigate();
   
