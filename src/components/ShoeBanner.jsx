@@ -1,56 +1,58 @@
-import React, { useContext } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/Context';
 
 const ShoeBanner = () => {
   const navigate = useNavigate();
-  const {user, setUser} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
+  const bannerProduct = {
+    id: 99, 
+    name: 'LeBron 19',
+    category: 'Basketball Shoes',
+    price: 200,
+    images: ['./main.png'], 
+    cartId: Date.now(), 
+    features: [ 
+      'Rubber outsole gives you multidirectional traction.',
+      'Shown: Multi-Color/Multi-Color',
+      'Style: DH8460-900',
+    ]
+  };
 
-let arr = [{
-  para: 'LeBron 19 (Basketball Shoes)',
-  image: "./main.png"
-}];
-
-   const handleAddToCart = (item) => {
-    console.log("in maion",item)
-
-    setUser([...user, {...item}])
-    navigate('/cart')
-  
+  const handleAddToCart = () => {
+    setUser([...user, { ...bannerProduct }]);
+    navigate('/cart');
   };
 
   return (
-   <>
-    {arr.map((val)=> (
-      <div className="bg-black text-white min-h-screen flex items-center justify-center px-6">
-      
+    <div className="bg-black text-white min-h-screen flex items-center justify-center px-6">
       <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between">
         
-        {/* Left Content */}
         <div className="max-w-xl space-y-6">
           <h2 className="text-4xl md:text-5xl font-bold leading-tight">
             YOUR FAVORITE<br />SNEAKERS
           </h2>
           <div>
-            <p className="text-lg font-semibold">{val.para}</p>
+            <p className="text-lg font-semibold">{bannerProduct.name} ({bannerProduct.category})</p>
             <ul className="text-sm text-gray-300 mt-2 space-y-1 list-disc list-inside">
-              <li>Rubber outsole gives you multidirectional traction.</li>
-              <li>Shown: Multi-Color/Multi-Color</li>
-              <li>Style: DH8460-900</li>
+              {bannerProduct.features.map((feature, index) => (
+                <li key={index}>{feature}</li>
+              ))}
             </ul>
           </div>
-         <button onClick={()=> handleAddToCart(val)} className=" bg-white text-black px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-200 transition">
+          <button 
+            onClick={handleAddToCart} 
+            className="bg-white text-black px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-200 transition"
+          >
             Make an order
           </button>
         </div>
 
-        {/* Right Sneaker Image */}
         <div className="mt-10 md:mt-0 relative">
           <div className="relative z-10">
             <img
-            
-              src= {val.image}
+              src={bannerProduct.images[0]} 
               alt="Sneaker"
               className="w-[400px] drop-shadow-2xl"
             />
@@ -59,12 +61,7 @@ let arr = [{
         </div>
       </div>
     </div>
+  );
+};
 
-    ))}
-   
-    </>
-  )
-  
-}
-
-export default ShoeBanner
+export default ShoeBanner;

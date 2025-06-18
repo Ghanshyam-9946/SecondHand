@@ -9,6 +9,7 @@ import Signin from '../pages/Signin'
 import Signup from '../pages/Signup'
 import Cart from '../pages/Cart'
 import Buy from '../pages/Buy'
+import ShoeDetail from '../pages/ShoeDetail'
 
 
 
@@ -26,7 +27,7 @@ const Mainroute = () => {
             <Route path='signup' element= {<Signup/>}/>
             <Route path='cart' element = {<Cart/>}/>
             <Route path='buy' element = {<Buy/>}/>
-           
+           <Route path="/product/:id" element={<ShoeDetail />} />
            
            
 

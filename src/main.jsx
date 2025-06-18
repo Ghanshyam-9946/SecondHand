@@ -6,7 +6,6 @@ import { BrowserRouter } from "react-router-dom";
 import Context from "./context/Context.jsx";
 import ContextProvider from "./context/Context.jsx";
 import UserProvider from "./context/Context.jsx";
-// import Context from "./context/Context.jsx";
 
 createRoot(document.getElementById("root")).render(
 <UserProvider>
